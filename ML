@@ -105,7 +105,7 @@ What are future research areas?
 Applying the proposed approach to other applications, including Named Entity Recognition.
 What are possible business applications?
 Faster and more stable training of deep learning models used in business settings.
-Where can you get implementation code?
+Where can you get implementation code.
 You can find the implementation code for RAdam on GitHub.
 5. XLNet: Generalized Autoregressive Pretraining for Language Understanding, by Zhilin Yang, Zihang Dai, Yiming Yang, Jaime Carbonell, Ruslan Salakhutdinov, Quoc V. Le
 Original Abstract
