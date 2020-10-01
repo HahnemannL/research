@@ -3,34 +3,34 @@
 Original Abstract
 Neural network pruning techniques can reduce the parameter counts of trained networks by over 90%, decreasing storage requirements, and improving the computational performance of inference without compromising accuracy. However, the contemporary experience is that the sparse architectures produced by pruning are difficult to train from the start, which would similarly improve training performance.
 
-We find that a standard pruning technique naturally uncovers subnetworks whose initializations made them capable of training effectively. Based on these results, we articulate the “lottery ticket hypothesis:” dense, randomly-initialized, feed-forward networks contain subnetworks (“winning tickets”) that – when trained in isolation – reach test accuracy comparable to the original network in a similar number of iterations. The winning tickets we find have won the initialization lottery: their connections have initial weights that make training particularly effective.
+We find that a standard pruning technique naturally uncovers subnetworks whose initializations made them capable of training effectively. Based on these results, we articulate the “lottery ticket hypothesis” - dense, randomly-initialized, feed-forward networks contain subnetworks (“winning tickets”) that – when trained in isolation – reach test accuracy comparable to the original network in a similar number of iterations. 
+The winning tickets we find have won the initialization lottery: their connections have initial weights that make training particularly effective.
 
-We present an algorithm to identify winning tickets and a series of experiments that support the lottery ticket hypothesis and the importance of these fortuitous initializations. We consistently find winning tickets that are less than 10-20% of the size of several fully-connected and convolutional feed-forward architectures for MNIST and CIFAR10. Above this size, the winning tickets that we find to learn faster than the original network and reach higher test accuracy.
+We present an algorithm to identify winning tickets and a series of experiments that support the lottery ticket hypothesis and the importance of these fortuitous initializations. We consistently find winning tickets that are less than 10-20% of the size of several fully-connected and convolutional feed-forward architectures for MNIST and CIFAR10. Above this size, the winning tickets that we find are learning faster than the original network and reaching higher test accuracy.
 
 Our Summary
-Neural networks are often generated to be larger than is strictly necessary for initialization and then pruned after training to a core group of nodes. The Lottery Ticket Hypothesis proposes that, given this eventual pruning, there must be a smaller starting network which, if perfectly initialized, could achieve the same level of performance after training. The researchers generated so-called “winning ticket” networks, which are equal in accuracy to their parent networks at 10-20% of the size, by iteratively training, pruning, and re-initializing a neural network. The experiments confirm that the proposed approach enables higher test accuracy with faster training.
+Neural networks are often generated to be, larger than what is strictly necessary for initialization and then pruned after training to a core group of nodes. The Lottery Ticket Hypothesis proposes that, given this eventual pruning, there must be a smaller starting network which, if perfectly initialized, could achieve the same level of performance after training. The researchers generated so-called “winning ticket” networks, which are equal in accuracy to their parent networks at 10-20% of the size, by iteratively training, pruning, and re-initializing a neural network. The experiments confirm that the proposed approach enables higher test accuracy with faster training.
 
 What’s the core idea of this paper?
-For every neural network, there is a smaller subset of nodes that can be used in isolation to achieve the same accuracy after training.
+- For every neural network, there is a smaller subset of nodes that can be used in isolation to achieve the same accuracy after training.
 This subset of nodes can be found from an original large neural network by iteratively training it, pruning its smallest-magnitude weights, and re-initializing the remaining connections to their original values.
 Iterative pruning, rather than one-shot pruning, is required to find winning ticket networks with the best accuracy at minimal sizes.
-What’s the key achievement?
-Introducing the Lottery Ticket Hypothesis, which provides a new perspective on the composition of neural networks.
-Suggesting a reproducible method for identifying winning ticket subnetworks for a given original, large network.
-Inspiring designing new architectures and initialization schemes that will result in much more efficient neural networks.
+What are the key achievements?
+- * Introducing the Lottery Ticket Hypothesis, which provides a new perspective on the composition of neural networks.
+  * Suggesting a reproducible method for identifying winning ticket subnetworks for a given original, large network.
+  * Inspiring designing new architectures and initialization schemes that will result in much more efficient neural networks.
 What does the AI community think?
-The paper received the Best Paper Award at ICLR 2019, one of the key conferences in machine learning.
-It has sparked follow-up work by several research teams (e.g. Uber).
+- The paper received the Best Paper Award at ICLR 2019, one of the key conferences in machine learning & it has sparked follow-up work by several research teams (e.g. Uber).
 What are the future research areas?
-Finding more efficient ways to reach a winning ticket network so that the hypothesis can be tested on larger datasets.
-Trying out pruning methods other than sparse pruning.
-Investigating the need for learning rate warmup with iterative pruning in deep neural networks.
-Stabilizing the Lottery Ticket Hypothesis, as suggested in the researchers’ follow-up paper.
+- * Finding more efficient ways to reach a winning ticket network so that the hypothesis can be tested on larger datasets.
+  * Trying out pruning methods other than sparse pruning.
+  * Investigating the need for learning rate warmup with iterative pruning in deep neural networks.
+  * Stabilizing the Lottery Ticket Hypothesis, as suggested in the researchers’ follow-up paper.
 What are the possible business applications?
-Vastly decreasing time and computational requirements for training neural networks.
-Building neural networks that are small enough to be trained on individual devices rather than on cloud computing networks.
+- Vastly decreasing time and computational requirements for training neural networks by building neural networks that are small enough to be trained on individual devices rather than on cloud computing networks.
 Where can you get the implementation code?
-An implementation of the MNIST database is available on GitHub.
+- An implementation of the MNIST database is available on GitHub.
+
 2. Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations, by Francesco Locatello, Stefan Bauer, Mario Lucic, Gunnar Rätsch, Sylvain Gelly, Bernhard Schölkopf, Olivier Bachem
 Original Abstract
 The key idea behind the unsupervised learning of disentangled representations is that real-world data is generated by a few explanatory factors of variation which can be recovered by unsupervised learning algorithms. In this paper, we provide a sober look at recent progress in the field and challenge some common assumptions. We first theoretically show that the unsupervised learning of disentangled representations is fundamentally impossible without inductive biases on both the models and the data. Then, we train more than 12000 models covering the most prominent methods and evaluation metrics in a reproducible large-scale experimental study on seven different data sets. We observe that while the different methods successfully enforce properties “encouraged” by the corresponding losses, well-disentangled models seemingly cannot be identified without supervision. Furthermore, increased disentanglement does not seem to lead to a decreased sample complexity of learning for downstream tasks. Our results suggest that future work on disentanglement learning should be explicit about the role of inductive biases and (implicit) supervision, investigate concrete benefits of enforcing disentanglement of the learned representations, and consider a reproducible experimental setup covering several data sets.
@@ -39,47 +39,48 @@ Our Summary
 Enabling machines to understand high-dimensional data and turn that information into usable representations in an unsupervised manner remains a major challenge for machine learning. In this paper, the joint team of researchers from ETH Zurich, the Max Planck Institute for Intelligent Systems, and Google Research prove theoretically that unsupervised learning of disentangled representations is impossible without inductive bias in both the learning approaches being considered and the datasets. Furthermore, they performed a large-scale evaluation of the recent unsupervised disentanglement learning methods by training more than 12,000 models on seven datasets to confirm their findings empirically.
 
 What’s the core idea of this paper?
-The research paper theoretically proves that unsupervised learning of disentangled representations is fundamentally impossible without inductive biases.
+- The research paper theoretically proves that unsupervised learning of disentangled representations is fundamentally impossible without inductive biases.
 The theoretical findings are supported by the results of a large-scale reproducible experimental study, where the researchers implemented six state-of-the-art unsupervised disentanglement learning approaches and six disentanglement measures from scratch on seven datasets:
 Even though all considered methods ensure that the individual dimensions of the aggregated posterior (which is sampled) are uncorrelated, the dimensions of the representation (which is taken to be the mean) are still correlated.
 Random seeds and hyperparameters often matter more than the model but tuning seems to require supervision.
 Increased disentanglement doesn’t necessarily imply a decreased sample complexity of learning downstream tasks.
 What’s the key achievement?
-The authors of the research have challenged common beliefs in unsupervised disentanglement learning both theoretically and empirically.
+- The authors of the research have challenged common beliefs in unsupervised disentanglement learning both theoretically and empirically.
 Following their findings, the research team suggests directions for future research on disentanglement learning.
-They also release important resources for future work in this research area:
+They also released important resources for future work in this research area:
 a new library to train and evaluate disentangled representations;
 over 10,000 trained models that can be used as baselines for future research.
 What does the AI community think?
-The paper received the Best Paper Award at ICML 2019, one of the leading conferences in machine learning.
+- The paper received the Best Paper Award at ICML 2019, one of the leading conferences in machine learning.
 What are the future research areas?
-Exploring the role of inductive bias as well as implicit and explicit supervision in unsupervised learning disentangled representations.
+- Exploring the role of inductive bias as well as implicit and explicit supervision in unsupervised learning disentangled representations.
 Demonstrating the concrete practical benefits of enforcing a specific notion of disentanglement of the learned representations.
 Conducting experiments in a reproducible experimental setup on a wide variety of datasets with different degrees of difficulty to see whether the conclusions and insights are generally applicable.
 Where can you get the implementation code?
-The library used to create the experimental study is available on GitHub.
+- The library used to create the experimental study is available on GitHub.
 The research team also released more than 10,000 pre-trained disentanglement models, also available on GitHub.
+
 3. Meta-Learning Update Rules for Unsupervised Representation Learning, by Luke Metz, Niru Maheswaranathan, Brian Cheung, Jascha Sohl-Dickstein
 Original Abstract
 A major goal of unsupervised learning is to discover data representations that are useful for subsequent tasks, without access to supervised labels during training. Typically, this involves minimizing a surrogate objective, such as the negative log-likelihood of a generative model, with the hope that representations useful for subsequent tasks will arise as a side effect. In this work, we propose instead to directly target later desired tasks by meta-learning an unsupervised learning rule which leads to representations useful for those tasks. Specifically, we target semi-supervised classification performance, and we meta-learn an algorithm — an unsupervised weight update rule – that produces representations useful for this task. Additionally, we constrain our unsupervised update rule to a be a biologically-motivated, neuron-local function, which enables it to generalize to different neural network architectures, datasets, and data modalities. We show that the meta-learned update rule produces useful features and sometimes outperforms existing unsupervised learning techniques. We further show that the meta-learned unsupervised update rule generalizes to train networks with different widths, depths, and nonlinearities. It also generalizes to train on data with randomly permuted input dimensions and even generalizes from image datasets to a text task.
 
 Our Summary
-One of the major issues with unsupervised learning is that most unsupervised models produce useful representations only as a side effect, rather than as the direct outcome of the model training. Researchers from Google Brain and the University of California, Berkeley, sought to use meta-learning to tackle the problem of unsupervised representation learning. In particular, they propose to meta-learn an unsupervised update rule by meta-training on a meta-objective that directly optimizes the value of the produced representation. Furthermore, the suggested meta-learning approach can be generalized across input data modalities, across permutations of the input dimensions, and neural network architectures.
+One of the major issues with unsupervised learning is, that most unsupervised models produce useful representations only as a side effect, rather than as the direct outcome of the model training. Researchers from Google Brain and the University of California, Berkeley, sought to use meta-learning to tackle the problem of unsupervised representation learning. In particular, they propose to meta-learn an unsupervised update rule by meta-training on a meta-objective that directly optimizes the value of the produced representation. Furthermore, the suggested meta-learning approach can be generalized across input data modalities, across permutations of the input dimensions, and neural network architectures.
 
-TOP ML Research
 What’s the core idea of this paper?
-Unsupervised learning has typically found useful data representations as a side effect of the learning process, rather than as the result of a defined optimization objective.
+- Unsupervised learning has typically found useful data representations as a side effect of the learning process, rather than as the result of a defined optimization objective.
 To address this problem, the researchers propose meta-learning an unsupervised update rule that produces representations useful for a specific task:
-The meta-objective directly reflects the usefulness of a representation generated from unlabeled data for further supervised tasks.
-An unsupervised update rule is constrained to be a biologically-motivated, neuron-local function, enabling generalizability.
-What’s the key achievement?
-Introducing a meta-learning approach with an inner loop consisting of unsupervised learning.
-Demonstrating generalizability across input data modalities, datasets, permuted input dimensions, and neural network architectures.
-Achieving performance that matches or exceeds existing unsupervised learning techniques.
+  The meta-objective directly reflects the usefulness of a representation generated from unlabeled data for further supervised tasks.
+  An unsupervised update rule is constrained to be a biologically-motivated, neuron-local function, enabling generalizability.
+What are the key achievements?
+- * Introducing a meta-learning approach with an inner loop consisting of unsupervised learning.
+  * Demonstrating generalizability across input data modalities, datasets, permuted input dimensions, and neural network architectures.
+  * Achieving performance that matches or exceeds existing unsupervised learning techniques.
 What does the AI community think?
-The paper was presented at ICLR 2019, one of the leading conferences in machine learning.
+- The paper was presented at ICLR 2019, one of the leading conferences in machine learning.
 What are the future research areas?
-Further investigating the possibilities for replacing manual algorithm design with architectures designed for learning and learned from data via meta-learning.
+- Further investigating the possibilities for replacing manual algorithm design with architectures designed for learning and learned from data via meta-learning.
+
 4. On the Variance of the Adaptive Learning Rate and Beyond, by Liyuan Liu, Haoming Jiang, Pengcheng He, Weizhu Chen, Xiaodong Liu, Jianfeng Gao, Jiawei Han
 Original Abstract
 The learning rate warmup heuristic achieves remarkable success in stabilizing training, accelerating convergence and improving generalization for adaptive stochastic optimization algorithms like RMSprop and Adam. Here, we study its mechanism in details. Pursuing the theory behind warmup, we identify a problem of the adaptive learning rate (i.e., it has problematically large variance in the early stage), suggest warmup works as a variance reduction technique, and provide both empirical and theoretical evidence to verify our hypothesis. We further propose RAdam, a new variant of Adam, by introducing a term to rectify the variance of the adaptive learning rate. Extensive experimental results on image classification, language modeling, and neural machine translation verify our intuition and demonstrate the effectiveness and robustness of our proposed method.
@@ -87,53 +88,52 @@ The learning rate warmup heuristic achieves remarkable success in stabilizing tr
 Our Summary
 In this paper, the Microsoft research team investigates the effectiveness of the warmup heuristic used for adaptive optimization algorithms. They show that the adaptive learning rate can cause the model to converge to bad local optima because of the large variance in the early stage of model training due to the limited number of training samples being used. This justifies the use of warmup heuristic to reduce such variance by setting smaller learning rates in the first few epochs of training. To ensure automatic control over the warmup behavior, the researchers introduce a new variant of Adam, called Rectified Adam (RAdam). It explicitly rectifies the variance of the adaptive learning rate based on derivations. The experiments demonstrate the effectiveness of the suggested approach in a variety of tasks, including image classification, language modeling, and neural machine translation.
 
-TOP ML research - RAdam
 What’s the core idea of this paper?
-Adaptive learning rate algorithms like Adam are prone to falling into suspicious or bad local optima unless they are given a warm-up period with a smaller learning rate in the first few epochs of training.
+- Adaptive learning rate algorithms like Adam are prone to falling into suspicious or bad local optima unless they are given a warm-up period with a smaller learning rate in the first few epochs of training.
 A new optimization algorithm, RAdam, rectifies the variance of the adaptive learning rate:
-If the variance is tractable (i.e., the approximated simple moving average is longer than 4), the variance rectification term is calculated, and parameters are updated with the adaptive learning rate.
-Otherwise, the adaptive learning rate is inactivated, and RAdam acts as stochastic gradient descent with momentum.
+  If the variance is tractable (i.e., the approximated simple moving average is longer than 4), the variance rectification term is calculated, and parameters are updated with
+  the adaptive learning rate.
+  Otherwise, the adaptive learning rate is inactivated, and RAdam acts as stochastic gradient descent with momentum.
 What’s the key achievement?
-The authors provide both empirical and theoretical evidence of their hypothesis that the adaptive learning rate has an undesirably large variance in the early stage of model training due to the limited amount of samples at that point.
+- The authors provide both empirical and theoretical evidence of their hypothesis that, the adaptive learning rate has an undesirably large variance in the early stage of model training due to the limited amount of samples at that point.
 They introduce Rectified Adam, a new variant of Adam, that:
-is theoretically sound;
-outperforms vanilla Adam and achieves similar performance to that of previous state-of-the-art warmup heuristics in image classification, language modeling, and machine translation;
-requires less hyperparameter tuning than Adam with warmup – particularly, it automatically controls the warmup behavior without the need to specify a learning rate.
+  is theoretically sound;
+  outperforms vanilla Adam and achieves similar performance to that of previous state-of-the-art warmup heuristics in image classification, language modeling, and machine translation;
+  requires less hyperparameter tuning than Adam with warmup – particularly, it automatically controls the warmup behavior without the need to specify a learning rate.
 What does the AI community think?
-“It’s been a long time since we’ve seen a new optimizer reliably beat the old favorites; this looks like a very encouraging approach!” – Jeremy Howard, a founding researcher at fast.ai.
+- “It’s been a long time since we’ve seen a new optimizer reliably beat the old favorites; this looks like a very encouraging approach!” – Jeremy Howard, a founding researcher at fast.ai.
 What are future research areas?
-Applying the proposed approach to other applications, including Named Entity Recognition.
+- Applying the proposed approach to other applications, including Named Entity Recognition.
 What are possible business applications?
-Faster and more stable training of deep learning models used in business settings.
-Where can you get implementation code.
-You can find the implementation code for RAdam on GitHub.
+- Faster and more stable training of deep learning models used in business settings.
+Where can you get the implementation code?
+- You can find the implementation code for RAdam on GitHub.
+
 5. XLNet: Generalized Autoregressive Pretraining for Language Understanding, by Zhilin Yang, Zihang Dai, Yiming Yang, Jaime Carbonell, Ruslan Salakhutdinov, Quoc V. Le
 Original Abstract
-With the capability of modeling bidirectional contexts, denoising autoencoding based pretraining like BERT achieves better performance than pretraining approaches based on autoregressive language modeling. However, relying on corrupting the input with masks, BERT neglects dependency between the masked positions and suffers from a pretrain-finetune discrepancy. In light of these pros and cons, we propose XLNet, a generalized autoregressive pretraining method that (1) enables learning bidirectional contexts by maximizing the expected likelihood over all permutations of the factorization order and (2) overcomes the limitations of BERT thanks to its autoregressive formulation. Furthermore, XLNet integrates ideas from Transformer-XL, the state-of-the-art autoregressive model, into pretraining. Empirically, XLNet outperforms BERT on 20 tasks, often by a large margin, and achieves state-of-the-art results on 18 tasks including question answering, natural language inference, sentiment analysis, and document ranking.
+With the capability of modeling bidirectional contexts, denoising autoencoding based pretraining like BERT achieves better performance than pretraining approaches based on autoregressive language modeling. However, relying on corrupting the input with masks, BERT neglects dependency between the masked positions and suffers from a pretrain-finetune discrepancy. In light of these pros and cons, we propose XLNet, a generalized autoregressive pretraining method that (1) enables learning bidirectional contexts by maximizing the expected likelihood over all permutations of the factorization order, (2) overcomes the limitations of BERT - thanks to its autoregressive formulation. Furthermore, XLNet integrates ideas from Transformer-XL, the state-of-the-art autoregressive model, into pretraining. Empirically, XLNet outperforms BERT on 20 tasks, often by a large margin, and achieves state-of-the-art results on 18 tasks including question answering, natural language inference, sentiment analysis, and document ranking.
 
 Our Summary
 The researchers from Carnegie Mellon University and Google have developed a new model, XLNet, for natural language processing (NLP) tasks such as reading comprehension, text classification, sentiment analysis, and others. XLNet is a generalized autoregressive pretraining method that leverages the best of both autoregressive language modeling (e.g., Transformer-XL) and autoencoding (e.g., BERT) while avoiding their limitations. The experiments demonstrate that the new model outperforms both BERT and Transformer-XL and achieves state-of-the-art performance on 18 NLP tasks.
 
-TOP ML Research - NLP
 What’s the core idea of this paper?
-XLNet combines the bidirectional capability of BERT with the autoregressive technology of Transformer-XL:
-Like BERT, XLNet uses a bidirectional context, which means it looks at the words before and after a given token to predict what it should be. To this end, XLNet maximizes the expected log-likelihood of a sequence with respect to all possible permutations of the factorization order.
-As an autoregressive language model, XLNet doesn’t rely on data corruption, and thus avoids BERT’s limitations due to masking – i.e., pretrain-finetune discrepancy and the assumption that unmasked tokens are independent of each other.
-To further improve architectural designs for pretraining, XLNet integrates the segment recurrence mechanism and relative encoding scheme of Transformer-XL.
+- XLNet combines the bidirectional capability of BERT with the autoregressive technology of Transformer-XL:
+  Like BERT, XLNet uses a bidirectional context, which means it looks at the words before and after a given token to predict what it should be. To this end, XLNet maximizes the expected log-likelihood of a sequence with respect to all possible permutations of the factorization order.
+  As an autoregressive language model, XLNet doesn’t rely on data corruption, and thus avoids BERT’s limitations due to masking – i.e., pretrain-finetune discrepancy and the assumption that unmasked tokens are independent of each other.
+  To further improve architectural designs for pretraining, XLNet integrates the segment recurrence mechanism and relative encoding scheme of Transformer-XL.
 What’s the key achievement?
-XLnet outperforms BERT on 20 tasks, often by a large margin.
-The new model achieves state-of-the-art performance on 18 NLP tasks including question answering, natural language inference, sentiment analysis, and document ranking.
+- XLnet outperforms BERT on 20 tasks, often by a large margin. The new model achieves state-of-the-art performance on 18 NLP tasks including question answering, natural language inference, sentiment analysis, and document ranking.
 What does the AI community think?
-The paper was accepted for oral presentation at NeurIPS 2019, the leading conference in artificial intelligence.
-“The king is dead. Long live the king. BERT’s reign might be coming to an end. XLNet, a new model by people from CMU and Google outperforms BERT on 20 tasks.” – Sebastian Ruder, a research scientist at Deepmind.
-“XLNet will probably be an important tool for any NLP practitioner for a while…[it is] the latest cutting-edge technique in NLP.” – Keita Kurita, Carnegie Mellon University.
+- The paper was accepted for oral presentation at NeurIPS 2019, the leading conference in artificial intelligence.
+  “The king is dead. Long live the king. BERT’s reign might be coming to an end. XLNet, a new model by people from CMU and Google outperforms BERT on 20 tasks.” – Sebastian Ruder, a research scientist at Deepmind.
+  “XLNet will probably be an important tool for any NLP practitioner for a while…[it is] the latest cutting-edge technique in NLP.” – Keita Kurita, Carnegie Mellon University.
 What are future research areas?
-Extending XLNet to new areas, such as computer vision and reinforcement learning.
+- Extending XLNet to new areas, such as computer vision and reinforcement learning.
 What are possible business applications?
-XLNet may assist businesses with a wide range of NLP problems, including:
-chatbots for first-line customer support or answering product inquiries;
-sentiment analysis for gauging brand awareness and perception based on customer reviews and social media;
-the search for relevant information in document bases or online, etc.
+- XLNet may assist businesses with a wide range of NLP problems, including:
+  Chatbots for first-line customer support or answering product inquiries;
+  Sentiment analysis for gauging brand awareness and perception based on customer reviews and social media;
+  The search for relevant information in document bases or online, etc.
 Where can you get implementation code?
-The authors have released the official Tensorflow implementation of XLNet.
+- The authors have released the official Tensorflow implementation of XLNet.
 A PyTorch implementation of the model is also available on GitHub.
