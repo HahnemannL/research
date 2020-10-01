@@ -1,11 +1,11 @@
 10 Important ML Research Papers of 2019
 1. The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks, by Jonathan Frankle and Michael Carbin
 Original Abstract
-Neural network pruning techniques can reduce the parameter counts of trained networks by over 90%, decreasing storage requirements and improving computational performance of inference without compromising accuracy. However, contemporary experience is that the sparse architectures produced by pruning are difficult to train from the start, which would similarly improve training performance.
+Neural network pruning techniques can reduce the parameter counts of trained networks by over 90%, decreasing storage requirements, and improving the computational performance of inference without compromising accuracy. However, the contemporary experience is that the sparse architectures produced by pruning are difficult to train from the start, which would similarly improve training performance.
 
 We find that a standard pruning technique naturally uncovers subnetworks whose initializations made them capable of training effectively. Based on these results, we articulate the “lottery ticket hypothesis:” dense, randomly-initialized, feed-forward networks contain subnetworks (“winning tickets”) that – when trained in isolation – reach test accuracy comparable to the original network in a similar number of iterations. The winning tickets we find have won the initialization lottery: their connections have initial weights that make training particularly effective.
 
-We present an algorithm to identify winning tickets and a series of experiments that support the lottery ticket hypothesis and the importance of these fortuitous initializations. We consistently find winning tickets that are less than 10-20% of the size of several fully-connected and convolutional feed-forward architectures for MNIST and CIFAR10. Above this size, the winning tickets that we find learn faster than the original network and reach higher test accuracy.
+We present an algorithm to identify winning tickets and a series of experiments that support the lottery ticket hypothesis and the importance of these fortuitous initializations. We consistently find winning tickets that are less than 10-20% of the size of several fully-connected and convolutional feed-forward architectures for MNIST and CIFAR10. Above this size, the winning tickets that we find to learn faster than the original network and reach higher test accuracy.
 
 Our Summary
 Neural networks are often generated to be larger than is strictly necessary for initialization and then pruned after training to a core group of nodes. The Lottery Ticket Hypothesis proposes that, given this eventual pruning, there must be a smaller starting network which, if perfectly initialized, could achieve the same level of performance after training. The researchers generated so-called “winning ticket” networks, which are equal in accuracy to their parent networks at 10-20% of the size, by iteratively training, pruning, and re-initializing a neural network. The experiments confirm that the proposed approach enables higher test accuracy with faster training.
@@ -17,20 +17,20 @@ Iterative pruning, rather than one-shot pruning, is required to find winning tic
 What’s the key achievement?
 Introducing the Lottery Ticket Hypothesis, which provides a new perspective on the composition of neural networks.
 Suggesting a reproducible method for identifying winning ticket subnetworks for a given original, large network.
-Providing inspiration for designing new architectures and initialization schemes that will result in much more efficient neural networks.
+Inspiring designing new architectures and initialization schemes that will result in much more efficient neural networks.
 What does the AI community think?
 The paper received the Best Paper Award at ICLR 2019, one of the key conferences in machine learning.
 It has sparked follow-up work by several research teams (e.g. Uber).
-What are future research areas?
+What are the future research areas?
 Finding more efficient ways to reach a winning ticket network so that the hypothesis can be tested on larger datasets.
 Trying out pruning methods other than sparse pruning.
 Investigating the need for learning rate warmup with iterative pruning in deep neural networks.
 Stabilizing the Lottery Ticket Hypothesis, as suggested in the researchers’ follow-up paper.
-What are possible business applications?
+What are the possible business applications?
 Vastly decreasing time and computational requirements for training neural networks.
 Building neural networks that are small enough to be trained on individual devices rather than on cloud computing networks.
-Where can you get implementation code?
-An implementation on the MNIST database is available on GitHub.
+Where can you get the implementation code?
+An implementation of the MNIST database is available on GitHub.
 2. Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations, by Francesco Locatello, Stefan Bauer, Mario Lucic, Gunnar Rätsch, Sylvain Gelly, Bernhard Schölkopf, Olivier Bachem
 Original Abstract
 The key idea behind the unsupervised learning of disentangled representations is that real-world data is generated by a few explanatory factors of variation which can be recovered by unsupervised learning algorithms. In this paper, we provide a sober look at recent progress in the field and challenge some common assumptions. We first theoretically show that the unsupervised learning of disentangled representations is fundamentally impossible without inductive biases on both the models and the data. Then, we train more than 12000 models covering most prominent methods and evaluation metrics in a reproducible large-scale experimental study on seven different data sets. We observe that while the different methods successfully enforce properties “encouraged” by the corresponding losses, well-disentangled models seemingly cannot be identified without supervision. Furthermore, increased disentanglement does not seem to lead to a decreased sample complexity of learning for downstream tasks. Our results suggest that future work on disentanglement learning should be explicit about the role of inductive biases and (implicit) supervision, investigate concrete benefits of enforcing disentanglement of the learned representations, and consider a reproducible experimental setup covering several data sets.
